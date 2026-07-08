@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketNestNow - Content Marketing Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      /* Dark Theme (Default) - Matte Black, Purple, and Magenta Theme */
+      --bg-color: #0b0914;
+      --body-bg: #0b0914;
+      /* Deep matte black-purple */
+      --bg-card: #141221;
+      /* Deep matte purple-slate card */
+      --text-main: #ffffff;
+      --text-muted: #9d9ab8;
+      --accent-purple: #8b5cf6;
+      /* Electric purple */
+      --accent-magenta: #ec4899;
+      /* Hot pink/magenta */
+      --border-color: rgba(236, 72, 153, 0.15);
+      /* Hot pink tint border */
+      --border-purple: rgba(139, 92, 246, 0.2);
+      /* Purple border */
+      --input-bg: #1c1a2e;
+      --input-border: #2e2b4d;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --card-hover-border: #ec4899;
+    }
+
+    body.light-theme {
+      /* Light Theme - Clean High Contrast Matte with Magenta-Violet Gradient */
+      --bg-color: #fcf6ff;
+      --body-bg: linear-gradient(135deg, #ffffff 0%, #fcf0ff 40%, #fae1ff 70%, #f6d4ff 100%);
+      /* Pure white card */
+      --bg-card: #ffffff;
+      --text-main: #0c0a15;
+      --text-muted: #353146; /* Darker charcoal-violet for readable writing */
+      --accent-purple: #6366f1;
+      /* Deep indigo */
+      --accent-magenta: #db2777;
+      /* Deep magenta */
+      --border-color: rgba(219, 39, 119, 0.28); /* Section borders clearly visible */
+      --border-purple: rgba(99, 102, 241, 0.32);
+      --input-bg: #fdfcff;
+      --input-border: #b5adc4;
+      --shadow-color: rgba(99, 102, 241, 0.08);
+      --card-hover-border: #db2777;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* GLOBAL SMOOTH TRANSITION FOR THEME SWITCHING */
+    body,
+    header,
+    main,
+    section,
+    footer,
+    div,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    svg,
+    img {
+      transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        background-image 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        text-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        fill 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        stroke 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--body-bg, var(--bg-color));
+      background-attachment: fixed;
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* BACKGROUND DOODLES (SOCIAL MEDIA SKETCHES) */
+    .bg-doodles-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bg-doodle {
+      position: absolute;
+      stroke: var(--text-main);
+      stroke-width: 1.5px;
+      fill: none;
+      opacity: 0.08;
+      pointer-events: none;
+      transform: translateY(0) rotate(0deg);
+      will-change: transform;
+    }
+
+    body.light-theme .bg-doodle {
+      opacity: 0.06;
+      stroke: var(--accent-purple);
+    }
+
+    .doodle-facebook {
+      top: 15%;
+      right: 6%;
+      width: 90px;
+      height: 90px;
+    }
+
+    .doodle-instagram {
+      top: 45%;
+      left: 4%;
+      width: 80px;
+      height: 80px;
+    }
+
+    .doodle-linkedin {
+      top: 78%;
+      right: 8%;
+      width: 90px;
+      height: 90px;
+    }
+
+    /* BRAND HEADER */
+    .brand-header {
+      padding: 40px 10vw 0;
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo img {
+      height: 48px;
+      border-radius: 8px;
+    }
+
+    body.light-theme .brand-logo img {
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .brand-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    /* THEME TOGGLE BUTTON */
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow-color);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--accent-purple);
+      color: #ffffff;
+      border-color: transparent;
+      transform: scale(1.05);
+    }
+
+    .theme-toggle-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* HERO SECTION */
+    .hero-container {
+      position: relative;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 60px 10vw 100px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      /* Image Left, Text Right */
+      gap: 60px;
+      align-items: center;
+      min-height: calc(100vh - 120px);
+    }
+
+    /* Left border guideline */
+    .vertical-guide {
+      position: absolute;
+      left: calc(10vw - 10px);
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border-color);
+    }
+
+    .vertical-guide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-magenta);
+    }
+
+    /* Left Pane (Image container) */
+    .hero-image-pane {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      padding: 10px;
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-wrapper svg.sketchy-border {
+      position: absolute;
+      inset: -10px;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      stroke: var(--text-main);
+      stroke-width: 2px;
+      fill: none;
+      pointer-events: none;
+      opacity: 0.65;
+    }
+
+    .hero-illustration-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Stats badges */
+    .stats-badge {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      box-shadow: 0 10px 25px var(--shadow-color);
+      border-radius: 16px;
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 5;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .stats-badge-1 {
+      top: -10px;
+      left: -20px;
+    }
+
+    .stats-badge-2 {
+      bottom: -15px;
+      right: -15px;
+    }
+
+    .stats-badge-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-magenta);
+    }
+
+    .stats-badge-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Right Pane (Typographic content) */
+    .hero-content {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 10;
+    }
+
+    .hero-pretitle {
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .hero-pretitle span.highlight {
+      color: var(--accent-purple);
+    }
+
+    .hero-title-giant {
+      font-size: clamp(2.8rem, 6.8vw, 5.2rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-magenta) 50%, var(--text-main) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* HERO SLIDESHOW CAROUSEL */
+    @keyframes float-slideshow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    .hero-slideshow-container {
+      width: 100%;
+      height: 380px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: float-slideshow 6s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+      transform: scale(0.9) translateY(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.2));
+    }
+
+    .hero-cursive-subtitle {
+      font-family: 'Dancing Script', 'Caveat', cursive;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      color: var(--text-main);
+      margin-bottom: 35px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-cursive-subtitle svg.sketchy-line {
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      stroke: var(--accent-magenta);
+      opacity: 0.85;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.3vw, 1.15rem);
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 45px;
+    }
+
+    .hero-socials a {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .hero-socials a svg.sketchy-circle {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      stroke: var(--text-main);
+      stroke-width: 1.5px;
+      fill: none;
+      opacity: 0.5;
+    }
+
+    .hero-socials a:hover svg.sketchy-circle {
+      transform: rotate(15deg) scale(1.1);
+      stroke: var(--accent-magenta);
+      opacity: 1;
+    }
+
+    .hero-socials svg.icon-svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-pill-primary {
+      background: transparent;
+      color: var(--text-main);
+      border: 2px solid var(--text-main);
+    }
+
+    .btn-pill-primary:hover {
+      background: var(--text-main);
+      color: var(--bg-color);
+      border-color: var(--text-main);
+    }
+
+    .btn-pill-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      font-weight: 700;
+      padding: 16px 20px;
+    }
+
+    .btn-pill-secondary:hover {
+      color: var(--accent-purple);
+    }
+
+    /* Hand-drawn Arrow container */
+    .sketchy-arrow-container {
+      position: relative;
+      width: 100%;
+      height: 35px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    /* GENERAL SECTIONS STYLES */
+    .services-section,
+    .procedure-section,
+    .portfolio-section,
+    .testimonials-section,
+    .contact-section {
+      background: var(--bg-card);
+      margin: 60px auto;
+      padding: 80px 8vw;
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px var(--shadow-color);
+      max-width: 1400px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-header {
+      margin-bottom: 50px;
+      text-align: left;
+      border-left: 4px solid var(--accent-magenta);
+      padding-left: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-main);
+      letter-spacing: -1px;
+    }
+
+    /* SERVICES SECTION */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 0 8px 30px var(--shadow-color);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 12px 24px var(--shadow-color);
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 10px 18px;
+      display: inline-block;
+      align-self: flex-start;
+      position: relative;
+      border-radius: 8px;
+      background: var(--bg-card);
+      color: var(--text-main);
+      z-index: 1;
+      margin-bottom: 5px;
+    }
+
+    .service-card h3::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 8px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--accent-purple) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: -1;
+      pointer-events: none;
+      transition: background 0.5s ease;
+    }
+
+    .service-card:hover h3::before {
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-magenta) 100%);
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* PROCEDURE TIMELINE */
+    .timeline-container {
+      position: relative;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .timeline-node {
+      display: flex;
+      width: 100%;
+    }
+
+    .timeline-node:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-card {
+      width: 45%;
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px var(--shadow-color);
+      position: relative;
+    }
+
+    .timeline-header {
+      background: var(--accent-purple);
+      padding: 20px 30px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .step-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1;
+      opacity: 0.9;
+    }
+
+    .step-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .timeline-body {
+      padding: 25px 30px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .timeline-node::after {
+      content: '';
+      position: absolute;
+      width: 10%;
+      height: 1px;
+      background: var(--border-color);
+      top: 50%;
+      left: 45%;
+      z-index: 1;
+    }
+
+    .timeline-node:nth-child(even)::after {
+      left: auto;
+      right: 45%;
+    }
+
+    /* PORTFOLIO SECTION */
+    .portfolio-filters {
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 10px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-purple);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      border: 1px solid var(--border-color);
+    }
+
+    .portfolio-item.hidden {
+      display: none;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-category {
+      color: var(--accent-magenta);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      transform: translateY(20px);
+      transition: transform 0.3s ease 0.1s, color 0.3s ease;
+    }
+
+    .portfolio-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #ffffff;
+      transform: translateY(20px);
+      transition: transform 0.3s ease 0.2s;
+    }
+
+    .portfolio-item:hover .portfolio-category,
+    .portfolio-item:hover .portfolio-title {
+      transform: translateY(0);
+    }
+
+    /* REVIEWS TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 40px 30px;
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--card-hover-border);
+      box-shadow: 0 12px 24px var(--shadow-color);
+    }
+
+    .quote-icon {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 4rem;
+      color: var(--accent-magenta);
+      opacity: 0.15;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1;
+    }
+
+    .stars {
+      color: #FFD700;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-style: italic;
+      flex-grow: 1;
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .client-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .client-details h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .client-details p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 20px;
+      box-shadow: 0 4px 12px var(--shadow-color);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      color: var(--accent-magenta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+      font-weight: bold;
+    }
+
+    .contact-form-container {
+      background: var(--bg-color);
+      padding: 40px;
+      border-radius: 20px;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px var(--shadow-color);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--bg-card);
+      padding: 80px 5vw 40px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-main);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      margin-bottom: 60px;
+    }
+
+    .footer-about .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-about .logo img {
+      height: 48px;
+      border-radius: 8px;
+    }
+
+    .footer-about .brand-name {
+      font-size: 1.25rem;
+    }
+
+    .footer-about p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 320px;
+      font-size: 0.95rem;
+    }
+
+    .footer-links h4 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-main);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-purple);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+    }
+
+    .social-icon:hover {
+      background: var(--accent-purple);
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px);
+    }
+
+    .social-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* SCROLL ANIMATION RULES */
+    .scroll-anim {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scroll-anim.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* GRADIENT BORDERS FOR CONTACT SECTION HEADINGS */
+    .contact-info h2.gradient-border-purple,
+    .contact-form-container h3.gradient-border-purple {
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 24px;
+      display: inline-block;
+      position: relative;
+      border-radius: 8px;
+      background: var(--bg-card);
+      color: var(--text-main);
+      z-index: 1;
+      margin-bottom: 25px;
+    }
+
+    .contact-info h2.gradient-border-purple::before,
+    .contact-form-container h3.gradient-border-purple::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 8px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent-purple) 0%, #4f46e5 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        padding: 40px 6vw 80px;
+        gap: 50px;
+      }
+
+      .hero-slideshow-container {
+        height: 320px;
+      }
+
+      .vertical-guide {
+        left: calc(6vw - 10px);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-node,
+      .timeline-node:nth-child(even) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline-card {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .timeline-node::after {
+        display: none;
+      }
+
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .brand-header {
+        padding: 30px 6vw 0;
+      }
+
+      .hero-title-giant {
+        font-size: 3.2rem;
+      }
+
+      .hero-slideshow-container {
+        height: 260px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PORTFOLIO MODAL LIGHTBOX STYLES */
+    .portfolio-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 9, 20, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .modal-content {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      z-index: 1010;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 2.2rem;
+      cursor: pointer;
+      z-index: 1020;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--accent-magenta);
+    }
+
+    .modal-body-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      min-height: 480px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-body-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-image-col {
+      background: #06050b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-top-left-radius: 23px;
+      border-bottom-left-radius: 23px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-image-col {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 23px;
+        max-height: 280px;
+      }
+    }
+
+    .modal-image-col img {
+      width: 100%;
+      height: 100%;
+      max-height: 440px;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .modal-details-col {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .modal-badge {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--accent-purple) 100%);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--text-main);
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .modal-brand-section {
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .brand-section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .brand-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon-box {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .brand-details-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-details-text strong {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .brand-details-text span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND DOODLES (SOCIAL MEDIA SKETCHES) -->
+  <div class="bg-doodles-container">
+    <!-- Facebook Sketch -->
+    <svg class="bg-doodle doodle-facebook" viewBox="0 0 100 100">
+      <path d="M 50,95 L 50,55 M 50,55 L 40,55 M 50,55 L 50,35 C 50,20 60,15 75,15 M 50,45 L 65,45"
+        stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 15,10 C 50,5 90,12 92,48 C 94,84 84,92 48,92 C 12,92 8,80 10,48 C 12,16 10,8 15,10"
+        stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <!-- Instagram Sketch -->
+    <svg class="bg-doodle doodle-instagram" viewBox="0 0 100 100">
+      <path d="M 15,15 C 50,10 85,15 88,48 C 91,81 85,88 48,88 C 11,88 12,81 12,48 C 12,15 15,12 15,15"
+        stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 35,50 C 35,40 45,35 50,35 C 55,35 65,40 65,50 C 65,60 55,65 50,65 C 45,65 35,60 35,50"
+        stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="73" cy="27" r="3" fill="currentColor" stroke="none" />
+    </svg>
+    <!-- LinkedIn Sketch -->
+    <svg class="bg-doodle doodle-linkedin" viewBox="0 0 100 100">
+      <path d="M 15,15 C 50,10 85,15 88,48 C 91,81 85,88 48,88 C 11,88 12,81 12,48 C 12,15 15,12 15,15"
+        stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 30,40 L 30,75 M 30,28 L 30,30" stroke-linecap="round" stroke-width="2.5" />
+      <path d="M 50,42 L 50,75 M 50,52 C 55,42 65,42 70,48 L 70,75" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+
+  <!-- BRAND HEADER AND THEME TOGGLER -->
+  <header class="brand-header">
+    <div class="brand-logo">
+      <img src="images/marketnestnow_phoenix_logo_1783272802818.png" alt="MarketNestnow Logo">
+      <span class="brand-name">MarketNestNow</span>
+    </div>
+    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <!-- Sun icon (shown in light mode) -->
+      <svg class="sun-icon" style="display: none;" viewBox="0 0 24 24">
+        <path
+          d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zm-12.37 12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41z" />
+      </svg>
+      <!-- Moon icon (shown in dark mode by default) -->
+      <svg class="moon-icon" viewBox="0 0 24 24">
+        <path
+          d="M9.37 5.51c-.18.64-.27 1.31-.27 1.99 0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27C17.45 17.19 14.93 19 12 19c-3.87 0-7-3.13-7-7 0-2.93 1.81-5.45 4.37-6.49zM12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="hero-container">
+    <div class="vertical-guide"></div>
+
+    <!-- LEFT PANE (SLIDESHOW CAROUSEL & STATS OVERLAYS) -->
+    <div class="hero-image-pane scroll-anim">
+      <div class="hero-image-wrapper">
+        <!-- SVG Sketch border around the image -->
+        <svg class="sketchy-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path
+            d="M 5,5 L 95,4 C 97,4 96,6 96,8 L 95,95 C 95,97 93,96 91,96 L 4,95 C 2,95 4,93 4,91 L 5,3 C 5,2 7,4 8,4"
+            stroke-linecap="round" />
+        </svg>
+
+        <!-- Automated Slideshow Carousel -->
+        <div class="hero-slideshow-container">
+          <div class="hero-slide active">
+            <img src="images/youtube_illus_1783271802636.png" alt="YouTube Growth Illustration">
+          </div>
+          <div class="hero-slide">
+            <img src="images/social_media_illus_1783271781367.png" alt="Social Media SMM">
+          </div>
+          <div class="hero-slide">
+            <img src="images/graphic_design_illus_1783271791469.png" alt="Graphic Design Assets">
+          </div>
+          <div class="hero-slide">
+            <img src="images/influencer_illus_1783271811744.png" alt="Influencer Creator Collabs">
+          </div>
+        </div>
+
+        <!-- Stats Badge 1: 30+ Happy clients -->
+        <div class="stats-badge stats-badge-1">
+          <span class="stats-badge-num">30+</span>
+          <span class="stats-badge-label">Happy Clients</span>
+        </div>
+
+        <!-- Stats Badge 2: 150+ Designs delivered -->
+        <div class="stats-badge stats-badge-2">
+          <span class="stats-badge-num">150+</span>
+          <span class="stats-badge-label">Designs Delivered</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANE (CONTENT BLOCK) -->
+    <div class="hero-content">
+      <span class="hero-pretitle">HELLO EVERYONE, <span class="highlight">WE ARE</span></span>
+      <h1 class="hero-title-giant">MarketNestNow</h1>
+      <div class="hero-cursive-subtitle">
+        - a content marketing agency
+        <!-- Hand-drawn style underline doodle -->
+        <svg class="sketchy-line" viewBox="0 0 300 20" fill="none" preserveAspectRatio="none">
+          <path d="M5 12 C 50 15, 100 8, 150 12 C 200 16, 250 8, 295 10" stroke-width="3" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <p class="hero-desc">
+        We help brands grow by unleashing the potential of organic reach, creative thumbnail design, and visual channel
+        marketing.
+      </p>
+
+      <!-- Hand-drawn social media channels sketches -->
+      <div class="hero-socials">
+        <!-- Instagram Link -->
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <svg class="sketchy-circle" viewBox="0 0 50 50" preserveAspectRatio="none">
+            <path
+              d="M 25, 5 C 38, 5 45, 12 45, 25 C 45, 38 38, 45 25, 45 C 12, 45 5, 38 5, 25 C 5, 12 12, 5 26, 6 C 30, 6.2 38, 8 40, 11"
+              stroke-linecap="round" />
+          </svg>
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0 3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+
+        <!-- Facebook Link -->
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <svg class="sketchy-circle" viewBox="0 0 50 50" preserveAspectRatio="none">
+            <path
+              d="M 25, 5 C 38, 5 45, 12 45, 25 C 45, 38 38, 45 25, 45 C 12, 45 5, 38 5, 25 C 5, 12 12, 5 26, 6 C 30, 6.2 38, 8 40, 11"
+              stroke-linecap="round" />
+          </svg>
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path
+              d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.95c4.56-.93 8-4.96 8-9.95z" />
+          </svg>
+        </a>
+
+        <!-- LinkedIn Link -->
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <svg class="sketchy-circle" viewBox="0 0 50 50" preserveAspectRatio="none">
+            <path
+              d="M 25, 5 C 38, 5 45, 12 45, 25 C 45, 38 38, 45 25, 45 C 12, 45 5, 38 5, 25 C 5, 12 12, 5 26, 6 C 30, 6.2 38, 8 40, 11"
+              stroke-linecap="round" />
+          </svg>
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Hand-drawn Marker Arrow pointing down to Call to Action buttons -->
+      <div class="sketchy-arrow-container"
+        style="position: relative; width: 100%; height: 35px; margin-bottom: 10px; display: none;">
+        <svg class="sketchy-arrow" viewBox="0 0 100 40" fill="none"
+          style="position: absolute; left: 60px; top: 0; width: 80px; height: 35px; stroke: var(--accent-magenta); opacity: 0.8;">
+          <path d="M5,5 C30,12 60,18 80,30 M65,32 L82,31 L78,16" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2.5" />
+        </svg>
+      </div>
+
+      <div class="hero-buttons">
+        <a class="btn-pill btn-pill-primary"
+          onclick="window.open('https://forms.gle/nFwbyJF7Y97j7o7B7', '_blank')">CONTACT US</a>
+        <a href="#services" class="btn-pill btn-pill-primary">OUR SERVICES</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- SERVICES SECTION -->
+  <section class="services-section" id="services">
+    <div class="section-header">
+      <h2 class="section-title">SERVICES</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card scroll-anim">
+        <h3>Social Media Management</h3>
+        <p>Instagram, Linkedin, Facebook, Snapchat, Reddit</p>
+      </div>
+      <div class="service-card scroll-anim" style="transition-delay: 0.1s;">
+        <h3>YouTube Management</h3>
+        <p>Full time Management, growth including content creation strategy planning with analytics</p>
+      </div>
+      <div class="service-card scroll-anim" style="transition-delay: 0.2s;">
+        <h3>Graphic Designing</h3>
+        <p>Creating Professional Thumbnail for Your all social media and creating caraousel and posts</p>
+      </div>
+      <div class="service-card scroll-anim" style="transition-delay: 0.3s;">
+        <h3>Influencer Marketing</h3>
+        <p>Help you to connect with brands or Influencers collab to increase growth (connecting Brands * Creators)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCEDURE SECTION -->
+  <section class="procedure-section" id="procedure">
+    <div class="section-header">
+      <h2 class="section-title">OUR PROCESS</h2>
+    </div>
+
+    <div class="timeline-container">
+      <div class="timeline-node scroll-anim">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <span class="step-number">01</span>
+            <span class="step-title">Brainstorming</span>
+          </div>
+          <div class="timeline-body">
+            We help you to create new viral content ideas to increase your growth across various social media.
+          </div>
+        </div>
+      </div>
+      <div class="timeline-node scroll-anim">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <span class="step-number">02</span>
+            <span class="step-title">Content Creation and Approval</span>
+          </div>
+          <div class="timeline-body">
+            We review the proposed concepts with your team, refining and polishing until the deliverables exceed your
+            expectations.
+          </div>
+        </div>
+      </div>
+      <div class="timeline-node scroll-anim">
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <span class="step-number">03</span>
+            <span class="step-title">Creative Team</span>
+          </div>
+          <div class="timeline-body">
+            We are a team with professional and experienced social media management, youtube management and graphic
+            designing team with more than 5 years of experience in creative field.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="portfolio-section" id="work">
+    <div class="section-header">
+      <h2 class="section-title">OUR WORK</h2>
+    </div>
+
+    <div class="portfolio-filters scroll-anim">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="graphic">Graphic Designing</button>
+      <button class="filter-btn" data-filter="youtube">Youtube Management</button>
+      <button class="filter-btn" data-filter="social">Social Media Management</button>
+      <button class="filter-btn" data-filter="influencer">Influencer Meet Brands</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- Graphic Designing Projects (1, 2, 3) -->
+      <div class="portfolio-item scroll-anim" data-category="graphic" onclick="openPortfolioModal(1)">
+        <img src="images/UX/1.jpg" alt="Viral Thumbnail & Banner Design">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Graphic Designing</span>
+          <h4 class="portfolio-title">Viral Thumbnail & Banner Design</h4>
+        </div>
+      </div>
+
+      <div class="portfolio-item scroll-anim" data-category="graphic" style="transition-delay: 0.1s;"
+        onclick="openPortfolioModal(2)">
+        <img src="images/UX/horror_thumbnail.jpg" alt="YouTube Thumbnail Design">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Graphic Designing</span>
+          <h4 class="portfolio-title">YouTube Thumbnail Design</h4>
+        </div>
+      </div>
+
+      <div class="portfolio-item scroll-anim" data-category="graphic" style="transition-delay: 0.2s;"
+        onclick="openPortfolioModal(3)">
+        <img src="images/UX/3.jpg" alt="SEO Video Optimizations">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Graphic Designing</span>
+          <h4 class="portfolio-title">SEO Video Optimizations</h4>
+        </div>
+      </div>
+
+      <!-- YouTube Management Projects (4, 5) -->
+      <div class="portfolio-item scroll-anim" data-category="youtube" style="transition-delay: 0.15s;"
+        onclick="openPortfolioModal(4)">
+        <img src="images/UX/mavigadget_logo.png" alt="MaviGadget Channel Management">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">YouTube Management</span>
+          <h4 class="portfolio-title">MaviGadget Channel Management</h4>
+        </div>
+      </div>
+
+      <div class="portfolio-item scroll-anim" data-category="youtube" style="transition-delay: 0.2s;"
+        onclick="openPortfolioModal(5)">
+        <img src="images/UX/bottomline_logo.jpg" alt="TheBottomLine Growth Strategy">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">YouTube Management</span>
+          <h4 class="portfolio-title">TheBottomLine Growth Strategy</h4>
+        </div>
+      </div>
+
+      <!-- Social Media Management Projects (6, 7) -->
+      <div class="portfolio-item scroll-anim" data-category="social" style="transition-delay: 0.3s;"
+        onclick="openPortfolioModal(6)">
+        <img src="images/UX/financialboss_logo.jpg" alt="The Financial Boss Social SMM">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Social Media Management</span>
+          <h4 class="portfolio-title">The Financial Boss Social SMM</h4>
+        </div>
+      </div>
+
+      <div class="portfolio-item scroll-anim" data-category="social" style="transition-delay: 0.35s;"
+        onclick="openPortfolioModal(7)">
+        <img src="images/UX/assetwave_logo.jpg" alt="Assetwave End-to-End Growth">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Social Media Management</span>
+          <h4 class="portfolio-title">Assetwave End-to-End Growth</h4>
+        </div>
+      </div>
+
+      <!-- Influencer Meet Brands Projects (8, 9) -->
+      <div class="portfolio-item scroll-anim" data-category="influencer" style="transition-delay: 0.4s;"
+        onclick="openPortfolioModal(8)">
+        <img src="images/UX/dotkey_logo.jpg" alt="Dot & Key Skincare SMM">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Influencer Meet Brands</span>
+          <h4 class="portfolio-title">Dot & Key Skincare SMM</h4>
+        </div>
+      </div>
+
+      <div class="portfolio-item scroll-anim" data-category="influencer" style="transition-delay: 0.45s;"
+        onclick="openPortfolioModal(9)">
+        <img src="images/UX/mamaearth_logo.png" alt="Mamaearth Influencer Campaign">
+        <div class="portfolio-overlay">
+          <span class="portfolio-category">Influencer Meet Brands</span>
+          <h4 class="portfolio-title">Mamaearth Influencer Campaign</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-header">
+      <h2 class="section-title">CLIENT REVIEWS</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card scroll-anim">
+        <div class="quote-icon">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">MarketNestnow transformed our digital presence. Their attention to detail and
+          aesthetic direction is unparalleled. We saw a 300% increase in leads within the first quarter.</p>
+        <div class="client-info">
+          <div class="client-avatar">MG</div>
+          <div class="client-details">
+            <h4>Mavi Gadgets</h4>
+            <p>Client</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card scroll-anim" style="transition-delay: 0.1s;">
+        <div class="quote-icon">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">The team here is incredibly creative and analytical. They didn't justhelped us to
+          grow the brand also; they helped us to get me a proper brand collaborations for my instagram page and also
+          they have helped me to reach out to brand from my interested niche and also their charges is quite reasonable.
+        </p>
+        <div class="client-info">
+          <div class="client-avatar">PS</div>
+          <div class="client-details">
+            <h4>Priya Sharma</h4>
+            <p>Digital Creator / Influencer</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card scroll-anim" style="transition-delay: 0.2s;">
+        <div class="quote-icon">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Working with MarketNestnow has been a game changer. Their Thumbnail and motion
+          graphics are top-tier and gave our brand growth in social media it desperately needed.</p>
+        <div class="client-info">
+          <div class="client-avatar">ND</div>
+          <div class="client-details">
+            <h4>NexusDMC</h4>
+            <p>Travelling Company</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="contact-info scroll-anim">
+      <h2 class="gradient-border-purple">Get In Touch</h2>
+      <p>Have a project in mind? We'd love to help you grow your brand and unleash its full potential on social media.
+        Contact us directly or open our brief project form to get started.</p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">@</div>
+          <span>rambogodslg321@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <span>+91-8918109778</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-container scroll-anim"
+      style="display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; gap: 20px;">
+      <h3 class="gradient-border-purple" style="font-family: 'Poppins', sans-serif;">Tell Us About Your Project</h3>
+      <p style="color: var(--text-muted); max-width: 300px; font-size: 0.95rem;">Fill out our online project
+        questionnaire to help us understand your marketing goals.</p>
+      <button class="btn-pill btn-pill-primary" style="padding: 16px 40px;"
+        onclick="window.open('https://forms.gle/nFwbyJF7Y97j7o7B7', '_blank')">Open Project Form</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+
+      <div class="footer-about">
+        <div class="logo">
+          <img src="images/marketnestnow_phoenix_logo_1783272802818.png" alt="MarketNestnow Logo">
+          <span class="brand-name">MarketNestNow</span>
+        </div>
+        <p>We are a high-end content marketing and management agency dedicated to growing your social media, YouTube
+          content strategy, and brand collaborations.</p>
+
+        <div class="social-links">
+          <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0 3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#services">About Us</a></li>
+          <li><a href="#work">Our Portfolio</a></li>
+          <li><a href="#procedure">How We Work</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Social Media</a></li>
+          <li><a href="#services">YouTube Growth</a></li>
+          <li><a href="#services">Graphic Design</a></li>
+          <li><a href="#services">Influencer Collabs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 MarketNestnow. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- PORTFOLIO LIGHTBOX MODAL -->
+  <div class="portfolio-modal" id="portfolio-modal">
+    <div class="modal-overlay" onclick="closePortfolioModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closePortfolioModal()">&times;</button>
+      <div class="modal-body-layout">
+        <div class="modal-image-col">
+          <img src="" id="modal-img" alt="Project Preview">
+        </div>
+        <div class="modal-details-col">
+          <div class="modal-badge" id="modal-badge">Category</div>
+          <h3 class="modal-title" id="modal-title">Project Title</h3>
+          <p class="modal-desc" id="modal-desc">Project description...</p>
+
+          <div class="modal-brand-section">
+            <h4 class="brand-section-title">Brand Collaboration Info</h4>
+            <div class="brand-meta-row">
+              <div class="brand-icon-box" id="modal-brand-icon">🤝</div>
+              <div class="brand-details-text">
+                <strong id="modal-brand-name">Brand Name</strong>
+                <span id="modal-brand-niche">Niche / Sector</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Intersection Observer for scroll animations (re-triggers on scroll up and down)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-anim').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Hero Slideshow Logic
+    let heroCurrentSlide = 0;
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 0) {
+      setInterval(() => {
+        heroSlides[heroCurrentSlide].classList.remove('active');
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroSlides.length;
+        heroSlides[heroCurrentSlide].classList.add('active');
+      }, 3000);
+    }
+
+    // Portfolio Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.classList.remove('hidden');
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 50);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+              item.classList.add('hidden');
+            }, 400); // Wait for transition to complete
+          }
+        });
+      });
+    });
+
+    // Theme Toggle logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = themeToggleBtn.querySelector('.sun-icon');
+    const moonIcon = themeToggleBtn.querySelector('.moon-icon');
+
+    // Check saved theme or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+      document.body.classList.add('light-theme');
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    } else {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+      if (isLight) {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+    });
+
+    // Scroll animation for background doodles (animates when scrolling only)
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+      const doodles = document.querySelectorAll('.bg-doodle');
+      doodles.forEach((doodle, index) => {
+        const speed = (index + 1) * 0.12;
+        const rotateSpeed = (index + 1) * 0.04;
+
+        // Calculate translation and rotation based on scroll position
+        doodle.style.transform = `translateY(${scrollPos * speed}px) rotate(${scrollPos * rotateSpeed}deg)`;
+      });
+    });
+
+    // Case Study Modal Data
+    const portfolioData = {
+      1: {
+        category: "Graphic Designing",
+        title: "AssetWave - High-CTR Car Purchase Guide Thumbnail",
+        desc: "For the personal finance YouTube channel AssetWave, we designed a custom click-generating thumbnail for their video 'Complete Car Purchase Guide'. Optimized contrast and text hierarchies to maximize visual impact in crowded feeds, yielding over 250k organic views and a 9.2% CTR.",
+        brandName: "AssetWave",
+        brandNiche: "Wealth Curation YouTube Channel",
+        brandIcon: "📈",
+        imagePath: "images/UX/1.jpg"
+      },
+      2: {
+        category: "Graphic Designing",
+        title: "YouTube Thumbnail Design | High-CTR Cinematic Thumbnail for a Horror Reaction Channel",
+        desc: "We partnered with a growing YouTube creator called SRPAY in the horror and reaction niche to design a thumbnail engineered for maximum click-through rate and audience curiosity.",
+        brandName: "SR PAY",
+        brandNiche: "Youtube Thumbnail Design",
+        brandIcon: "🫣",
+        imagePath: "images/UX/horror_thumbnail.jpg"
+      },
+      3: {
+        category: "Graphic Designing",
+        title: "AssetWave - High-Retention Investment Guide Thumbnail",
+        desc: "Designed the viral thumbnail for AssetWave's finance video '5 High Return Investments in 2025'. Implemented color-theory patterns and glowing borders to separate the video in search recommendation feeds, achieving a 9.8% click-through rate.",
+        brandName: "AssetWave",
+        brandNiche: "Wealth Curation YouTube Channel",
+        brandIcon: "🪙",
+        imagePath: "images/UX/3.jpg"
+      },
+      4: {
+        category: "YouTube Management",
+        title: "Full-Time YouTube Management & Content Marketing for MaviGadget",
+        desc: "Our team partnered with MaviGadget to provide comprehensive YouTube management and content marketing support, helping maintain a consistent publishing workflow while strengthening the channel's overall content strategy and brand presence.\n\nOur responsibilities included end-to-end YouTube channel management, content planning, upload scheduling, metadata optimization, thumbnail coordination, audience engagement, performance monitoring, and ongoing channel optimization. We worked closely with the content production team to ensure every video aligned with the brand's quality standards and publishing goals.",
+        brandName: "Mavi Gadgets",
+        brandNiche: "Product discovery & gadgets Channel",
+        brandIcon: "🔌",
+        imagePath: "images/UX/mavigadget_logo.png"
+      },
+      5: {
+        category: "YouTube Management",
+        title: "Full-Time YouTube Management & Growth Strategy for TheBottomLine Channel",
+        desc: "Our agency partnered with TheBottomLine, a fast-growing YouTube channel in the horror, mystery, and storytelling niche, to manage its YouTube operations and execute a data-driven content marketing strategy. Our objective was to strengthen the channel's brand identity, streamline content production, and maximize audience engagement through consistent optimization.",
+        brandName: "BottomLine",
+        brandNiche: "Horror & Mystery Channel",
+        brandIcon: "💀",
+        imagePath: "images/UX/bottomline_logo.jpg"
+      },
+      6: {
+        category: "Social Media Management",
+        title: "Social Media Management & Multi-Platform Growth for The Financial Boss",
+        desc: "Our agency partnered with The Financial Boss, a finance-focused digital brand, to manage its social media presence and execute a comprehensive content marketing strategy across multiple platforms. Our goal was to strengthen the brand's online authority, increase audience engagement, and maintain a consistent content ecosystem that educated and attracted finance enthusiasts.\n\nWe managed the brand's day-to-day social media operations, ensuring every piece of content aligned with its audience, and long-term growth objectives.",
+        brandName: "The Financial Boss",
+        brandNiche: "Financial Creator",
+        brandIcon: "👑",
+        imagePath: "images/UX/financialboss_logo.jpg"
+      },
+      7: {
+        category: "Social Media Management",
+        title: "Assetwave | End-to-End Digital Growth & Content Marketing",
+        desc: "Our agency partnered with Assetwave, a finance and business-focused brand, to build and manage its complete digital presence across multiple platforms. We provided an end-to-end content marketing solution, handling everything from social media management and YouTube operations to creative design, branding, and promotional campaigns.\n\nOur objective was to establish Assetwave as a trusted finance brand by maintaining a consistent publishing schedule, producing high-quality visual content, and implementing growth-focused marketing strategies across all digital channels.",
+        brandName: "Assetwave",
+        brandNiche: "Financial Influencer",
+        brandIcon: "📈",
+        imagePath: "images/UX/assetwave_logo.jpg"
+      },
+      8: {
+        category: "Influencer Meet Brands",
+        title: "Dot & Key Skincare | Influencer Marketing & Brand Collaboration Campaigns",
+        desc: "Our agency partnered with Dot & Key Skincare to execute influencer marketing campaigns that increased the brand's visibility and engagement across major social media platforms. We acted as the bridge between the brand and carefully selected content creators, ensuring every collaboration aligned with the campaign objectives, target audience, and brand identity.\n\nFrom influencer sourcing to campaign execution, our team managed the complete collaboration process, enabling authentic product promotion through high-quality reels, posts, and creator-led content.",
+        brandName: "Dot & Key Skincare",
+        brandNiche: "Skincare Brand",
+        brandIcon: "🧴",
+        imagePath: "images/UX/dotkey_logo.jpg"
+      },
+      9: {
+        category: "Influencer Meet Brands",
+        title: "Mamaearth | Influencer Marketing & Brand Collaboration Campaigns",
+        desc: "Our agency collaborated with Mamaearth to execute influencer marketing campaigns that connected the brand with relevant creators across social media. Our role was to identify, onboard, and manage influencers who could authentically showcase Mamaearth's products through engaging content that resonated with their audiences.\n\nFrom campaign planning to creator coordination, we managed the complete influencer collaboration process, ensuring every partnership aligned with the brand's marketing goals, content guidelines, and target demographic.",
+        brandName: "Mamaearth",
+        brandNiche: "Beauty, Cosmetic & Personal Care Brand",
+        brandIcon: "🌿",
+        imagePath: "images/UX/mamaearth_logo.png"
+      }
+    };
+
+    function openPortfolioModal(id) {
+      const data = portfolioData[id];
+      if (!data) return;
+
+      document.getElementById('modal-img').src = data.imagePath;
+      document.getElementById('modal-badge').innerText = data.category;
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-desc').innerText = data.desc;
+      document.getElementById('modal-brand-name').innerText = data.brandName;
+      document.getElementById('modal-brand-niche').innerText = data.brandNiche;
+      document.getElementById('modal-brand-icon').innerText = data.brandIcon;
+
+      const modal = document.getElementById('portfolio-modal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePortfolioModal() {
+      const modal = document.getElementById('portfolio-modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePortfolioModal();
+      }
+    });
+  </script>
+</body>
+
+</html>
